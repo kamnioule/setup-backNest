@@ -10,15 +10,15 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @UsePipes(new ValidationPipe()) // ✅ Active la validation
-  @ApiBody({ type: RegisterDto }) // ✅ Déclare le DTO pour Swagger
+  @UsePipes(new ValidationPipe())
+  @ApiBody({ type: RegisterDto }) 
   async register(@Body() body: RegisterDto) {
     return this.authService.register(body.email, body.password);
   }
 
   @Post('login')
-  @UsePipes(new ValidationPipe()) // ✅ Active la validation
-  @ApiBody({ type: LoginDto }) // ✅ Déclare le DTO pour Swagger
+  @UsePipes(new ValidationPipe())
+  @ApiBody({ type: LoginDto }) 
   login(@Body() body: LoginDto) {
     return this.authService.login(body.email, body.password);
   }
